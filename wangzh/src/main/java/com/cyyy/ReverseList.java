@@ -1,5 +1,7 @@
 package com.cyyy;
 
+import java.util.List;
+
 /**
  * @author wangzh
  * @date 2023/4/5
@@ -16,19 +18,24 @@ public class ReverseList {
     public static void main(String[] args) {
         ListNode listNode = create(1, 2, 3, 4, 5,6,7,8);
         print(listNode);
-        ListNode t=null;
-//        System.out.println();
-//        var t = reverseBetween(listNode,3,5);
-//        print(t);
-//        System.out.println();
-//        t = reverseBetween(listNode,1,3);
-//        print(t);
-        System.out.println();
-        t = reverseBetween(listNode,1,8);
+        var t = reverseList(listNode);
         print(t);
+        System.out.println("---------------");
+
+        listNode = create(1, 2, 3, 4, 5,6,7,8);
+        print(listNode);
+        t = reverseBetween(listNode,1,3);
+        print(t);
+        System.out.println("-----------------");
+
+        listNode = create(1, 2, 3, 4, 5,6,7,8);
+        print(listNode);
+        t = t(listNode,3);
+        print(t);
+        System.out.println("-----------------");
 
     }
-    public static ListNode ReverseList(ListNode head) {
+    public static ListNode reverseList(ListNode head) {
         if (head == null) return null;
         ListNode tmp = new ListNode(0);
         ListNode newHead = tmp;
@@ -74,6 +81,32 @@ public class ReverseList {
         if (m == 1) return newHead;
         return o;
     }
+    private static ListNode t(ListNode head,int k){
+        ListNode tmp = new ListNode(0);
+        tmp.next = head;
+        ListNode newHead = tmp;
+        ListNode returnHead = null;
+        ListNode preLastNode = null;
+        for (int i = 0; head != null; i++) {
+            if (i % k == 0 ){ // 新一轮循环
+                if (i  / k == 1){
+                    returnHead = newHead; // 第一轮循环
+                }
+                newHead = tmp;
+                if (i / k - 1 = )
+                preLastNode = head;
+            }
+            tmp.next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = tmp.next;
+            if (i / k != 0){
+                preLastNode.next = newHead;
+            }
+
+        }
+        return returnHead;
+    }
     private static ListNode create(int...  ints){
         var emptyHead = new ListNode(0);
         var next = emptyHead;
@@ -89,5 +122,6 @@ public class ReverseList {
             System.out.print(head.val + "  ");
             head = head.next;
         }
+        System.out.println();;
     }
 }
