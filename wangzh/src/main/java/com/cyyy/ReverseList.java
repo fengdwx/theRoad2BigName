@@ -37,18 +37,23 @@ public class ReverseList {
     }
     public static ListNode reverseList(ListNode head) {
         if (head == null) return null;
-        ListNode tmp = new ListNode(0);
-        ListNode newHead = tmp;
-        ListNode oriHead = head;
-        while (head != null) {
-            tmp.next = head.next;
-            head.next = newHead;
-            newHead = head;
-            head = tmp.next;
+        ListNode pre = null,curr = head,next;
+        while (curr != null) {
+            next = curr.next; // next
+            curr.next = pre;  // 当前节点指向前一个节点
+            pre = curr;       // 记录一下前节点
+            curr = next;
         }
-        oriHead.next = null;
-        return newHead;
+        return pre;
     }
+
+    /**
+     * 反转前节点 p0 指向反转后的pre,手节点指向cur
+     * @param head
+     * @param m
+     * @param n
+     * @return
+     */
     public static ListNode reverseBetween(ListNode head,int m,int n) {
         if (head == null) return null;
         ListNode tmp = new ListNode(0);
@@ -93,7 +98,7 @@ public class ReverseList {
                     returnHead = newHead; // 第一轮循环
                 }
                 newHead = tmp;
-                if (i / k - 1 = )
+                // if (i / k - 1 = )
                 preLastNode = head;
             }
             tmp.next = head.next;
