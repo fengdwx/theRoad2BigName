@@ -29,11 +29,10 @@ public class MergeSort {
         }
     }
     public static void recursionMergeSort(int[] nums,int start,int end){
+        if (end == start) return;
         int middle = (start + end) / 2;
-        if (end - start >= 2){
-            recursionMergeSort(nums,start,middle); // 左边
-            recursionMergeSort(nums,middle+1,end); // 右边
-        }
+        recursionMergeSort(nums,start,middle); // 左边
+        recursionMergeSort(nums,middle+1,end); // 右边
         merge(nums,start,end,middle);
     }
     public static void merge(int[] nums,int start, int end, int middle){
